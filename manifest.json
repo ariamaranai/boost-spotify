@@ -1,0 +1,1 @@
+{"manifest_version":3,"name":"spoticount","version":"0","description":"View spotify playcount","icons":{"128":"128.png"},"content_scripts":[{"js":["s.js"],"matches":["https://open.spotify.com/*"],"world":"MAIN","run_at":"document_start"}]}
