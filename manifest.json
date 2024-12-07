@@ -4,7 +4,7 @@
   "version": "0",
   "description": "Show spotify playcount",
   "icons": {
-    "128":"128.png"
+    "128": "128.png"
   },
   "content_scripts":[{
     "js": ["main.js"],
