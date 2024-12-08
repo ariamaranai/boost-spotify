@@ -44,7 +44,7 @@ HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
         Reflect.apply(a, b, c)
     }
   }
-}),
+})
 o.freeze = o.seal =a=> a
 o.isFrozen = o.isSealed =()=> 0
 (o=Response.prototype).json= new Proxy(o.json, {
