@@ -1,9 +1,6 @@
 {
-let
-o = Object,
-k = {},
-e = document.createElement("b")
-f =v=> {
+let o = Object, k = {}, e = document.createElement("b")
+let f =v=> {
   let n = v.playcount || ""
   v.playcount =
     (o = n.length) < 4 ? n :
@@ -12,7 +9,6 @@ f =v=> {
     (+n).toLocaleString()
   return v
 }
-
 HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
   apply: (a, b, c)=> {
     switch (c[0]) {
