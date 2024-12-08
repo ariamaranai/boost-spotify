@@ -1,17 +1,15 @@
 {
-let o = Object
-let k = {}
-let e = document.createElement("b")
-let f =v=> {
+let o = Object, k = {}, e = document.createElement("b"),
+f =v=> {
   let n = v.playcount || ""
   v.playcount =
     (o = n.length) < 4 ? n :
     o < 7 ? n.slice(0, o - 3) + "," + n.slice(-3) :
-    o < 10 ?n.slice(0, o - 6) +"," + n.slice(-6,-3) + "," + n.slice(-3) :
+    o < 10 ? n.slice(0, o - 6) + "," + n.slice(-6,-3) + "," + n.slice(-3) :
     (+n).toLocaleString()
   return v
 }
-HTMLDivElement.prototype.setAttribute=new Proxy(e.setAttribute, {
+HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
   apply: (a,b,c)=> {
     switch (c[0]) {
       case "class":
