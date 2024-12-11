@@ -39,9 +39,9 @@ HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
     }
   }
 })
-o.freeze = o.seal =a=> a
-o.isFrozen = o.isSealed =()=> 0
-(o=Response.prototype).json= new Proxy(o.json, {
+o.freeze = o.seal =a=> a,
+o.isFrozen = o.isSealed =()=> 0,
+(o=Response.prototype).json = new Proxy(o.json, {
   apply: async (a, b, c)=> (
     (a = (b = (c = await Reflect.apply(a, b, c)).data)?.albumUnion?.tracksV2?.items?.map(v=> f(v?.track)) ??
      b?.playlistV2?.content?.items?.map(v=> f(v?.itemV2?.data))) &&
