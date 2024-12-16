@@ -22,10 +22,12 @@ Object.hasOwnProperty =() => 1;
   };
   let fet = fetch;
   let res = new Response(null, { status: 404 });
+  
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
-    a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" ?
-    fet(a, b) : Promise.reject(res);
+    a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch"
+      ? fet(a, b)
+      : Promise.reject(res);
   HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
     apply: (a, b, c) => {
       switch (c[0]) {
