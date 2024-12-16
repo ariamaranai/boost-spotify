@@ -1,3 +1,5 @@
+XMLHttpRequest = 0;
+isFinite = Number.isFinite = () => 1;
 {
   let o = Object;
   let buf = {};
@@ -16,6 +18,12 @@
         : (+n).toLocaleString();
     return v;
   };
+  let fet = fetch;
+  fetch = (a, b) =>
+    (a == "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" ||
+     a == "https://gae2-spclient.spotify.com/melody/v1/msg/batch")
+      ? 0
+      : fet(a, b);  
   HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
     apply: (a, b, c) => {
       switch (c[0]) {
@@ -55,6 +63,7 @@
   });
   o.freeze = o.seal = a => a;
   o.isFrozen = o.isSealed = () => 0;
+
   (o = Response.prototype).json = new Proxy(o.json, {
     apply: async (a, b, c) => {
       let result = await Reflect.apply(a, b, c);
@@ -70,4 +79,3 @@
     }
   });
 }
-isFinite = Number.isFinite = () => 1;
