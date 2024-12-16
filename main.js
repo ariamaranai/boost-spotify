@@ -20,10 +20,9 @@ isFinite = Number.isFinite = () => 1;
   };
   let fet = fetch;
   fetch = (a, b) =>
-    (a == "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" ||
-     a == "https://gae2-spclient.spotify.com/melody/v1/msg/batch")
-      ? 0
-      : fet(a, b);  
+    a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
+    a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
+    fet(a, b);  
   HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
     apply: (a, b, c) => {
       switch (c[0]) {
