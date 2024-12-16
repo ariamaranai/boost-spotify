@@ -1,5 +1,7 @@
 XMLHttpRequest = 0;
-isFinite = Number.isFinite = () => 1;
+isFinite =
+Number.isFinite =
+Object.hasOwnProperty =() => 1;
 {
   let o = Object;
   let buf = {};
@@ -62,7 +64,6 @@ isFinite = Number.isFinite = () => 1;
   });
   o.freeze = o.seal = a => a;
   o.isFrozen = o.isSealed = () => 0;
-
   (o = Response.prototype).json = new Proxy(o.json, {
     apply: async (a, b, c) => {
       let result = await Reflect.apply(a, b, c);
