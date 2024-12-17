@@ -12,22 +12,24 @@ Object.hasOwnProperty =() => 1;
     let l = n.length;
     v.playcount =
       l < 4
-      ? n
-      : l < 7
-      ? n.slice(0, l - 3) + "," + n.slice(-3)
+        ? n
+        : l < 7
+        ? n.slice(0, l - 3) + "," + n.slice(-3)
         : l < 10
         ? n.slice(0, l - 6) + "," + n.slice(-6, -3) + "," + n.slice(-3)
         : (+n).toLocaleString();
     return v;
   };
+
   let fet = fetch;
   let res = new Response(null, { status: 404 });
-  
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
-    a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch"
+    a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
+    a.slice(40, 48) != "masthead"
       ? fet(a, b)
       : Promise.reject(res);
+
   HTMLDivElement.prototype.setAttribute = new Proxy(e.setAttribute, {
     apply: (a, b, c) => {
       switch (c[0]) {
