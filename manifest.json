@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "spoticount",
   "version": "0",
-  "description": "Show spotify playcount",
+  "description": "Show spotify playcount and boosting",
   "icons": {
     "128": "128.png"
   },
