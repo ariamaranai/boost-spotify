@@ -27,13 +27,13 @@ Object.hasOwnProperty = () => 1;
   };
 
   let fet = fetch;
-  let res = new Response(null, { status: 404 });
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
+    a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead"
       ? fet(a, b)
-      : Promise.reject(res);
+      : 0;
 
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     switch (a) {
