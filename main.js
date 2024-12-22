@@ -35,6 +35,30 @@ Object.hasOwnProperty = () => 1;
       ? fet(a, b)
       : 0;
 
+  Node.prototype.addEventListener = function (a, b, c) {
+    switch (a) {
+      case "auxclick":
+      case "copy":
+      case "cut":
+      case "dblclick":
+      case "drag":
+      case "dragend":
+      case "dragenter":
+      case "dragexit":
+      case "dragleave":
+      case "dragover":
+      case "dragstart":
+      case "error":
+      case "paste":
+      case "touchcancel":
+      case "touchend":
+      case "touchmove":
+      case "touchstart":
+        break;
+      default:
+        addEventListener.call(this, a, b, c);
+    }
+  };
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     switch (a) {
       case "class":
