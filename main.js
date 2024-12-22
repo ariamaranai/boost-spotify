@@ -43,6 +43,8 @@ Object.hasOwnProperty = () => 1;
         case "id":
           this.id = b;
           break;
+        case "aria-disabled":
+        case "aria-hidden":
         case "aria-label":
         case "aria-labelledby":
         case "dir":
