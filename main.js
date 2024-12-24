@@ -59,39 +59,55 @@ Object.hasOwnProperty = () => 1;
         addEventListener.call(this, a, b, c);
     }
   };
-  HTMLDivElement.prototype.setAttribute = function (a, b) {
+  HTMLElement.prototype.setAttribute = function (a, b) {
     switch (a) {
       case "class":
         this.className = b;
         break;
-        case "id":
-          this.id = b;
-          break;
-        case "aria-disabled":
-        case "aria-hidden":
-        case "aria-label":
-        case "aria-labelledby":
-        case "dir":
-        case "draggable":
-        case "lang":
-        case "role":
-        case "tabindex":
-        case "title":
-          break;
-        case "data-testid":
-          if (b == "tracklist-row") {
-            let items = buf[location.pathname.slice(-22)];
-            if (items) {
-              let uri = this.querySelector("a").href.slice(-22);
-              let n = items.find(v => v?.uri?.slice(-22) == uri)?.playcount;
-              if (n) {
-                let parent = this.lastChild;
-                parent.insertBefore(e.cloneNode(), parent.firstChild).textContent = n;
-              } 
-            }
+      case "href":
+      case "id":
+      case "src": 
+        this[a] = b;
+        break;
+      case "alt":
+      case "aria-checked":
+   // case "aria-colcount":
+   // case "aria-colindex":
+      case "aria-describedby":
+      case "aria-disabled":
+      case "aria-expanded":
+      case "aria-hidden":
+      case "aria-label":
+      case "aria-labelledby":
+   // case "aria-rowcount":
+   // case "aria-rowindex":
+      case "aria-pressed":
+      case "aria-selected":
+      case "aria-sort":
+      case "aria-valuetext":
+      case "dateTime":
+      case "dir":
+      case "draggable":
+      case "lang":
+      case "loading":
+      case "role":
+      case "tabindex":
+      case "title":
+        break;
+      case "data-testid":
+        if (b == "tracklist-row" && this.tagName == "DIV") {
+          let items = buf[location.pathname.slice(-22)];
+          if (items) {
+            let uri = this.querySelector("a").href.slice(-22);
+            let n = items.find(v => v?.uri?.slice(-22) == uri)?.playcount;
+            if (n) {
+              let parent = this.lastChild;
+              parent.insertBefore(e.cloneNode(), parent.firstChild).textContent = n;
+            } 
           }
-        default:
-          Element.prototype.setAttribute.call(this, a, b);
+        }
+      default:
+        Element.prototype.setAttribute.call(this, a, b);
       }
   };
 
