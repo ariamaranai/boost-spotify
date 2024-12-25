@@ -64,9 +64,11 @@ Object.hasOwnProperty = () => 1;
       case "class":
         this.className = b;
         break;
+      case "height":
       case "href":
       case "id":
       case "src": 
+      case "width":
         this[a] = b;
         break;
       case "alt":
@@ -76,11 +78,14 @@ Object.hasOwnProperty = () => 1;
       case "aria-describedby":
       case "aria-disabled":
       case "aria-expanded":
+      case "aria-haspopup":
       case "aria-hidden":
       case "aria-label":
       case "aria-labelledby":
+      case "aria-live":
    // case "aria-rowcount":
    // case "aria-rowindex":
+      case "aria-posinset":
       case "aria-pressed":
       case "aria-selected":
       case "aria-sort":
