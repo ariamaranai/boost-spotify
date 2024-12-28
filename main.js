@@ -74,6 +74,7 @@ Object.hasOwnProperty = () => 1;
       case "aria-checked":
    // case "aria-colcount":
    // case "aria-colindex":
+      case "aria-controls":
       case "aria-describedby":
       case "aria-disabled":
       case "aria-expanded":
@@ -81,14 +82,18 @@ Object.hasOwnProperty = () => 1;
       case "aria-hidden":
       case "aria-label":
       case "aria-labelledby":
+      case "aria-level":
       case "aria-live":
+      case "aria-modal":
    // case "aria-rowcount":
    // case "aria-rowindex":
       case "aria-posinset":
       case "aria-pressed":
       case "aria-selected":
+   // case "aria-setsize":
       case "aria-sort":
       case "aria-valuetext":
+      case "data-webpack":
       case "dateTime":
       case "dir":
       case "draggable":
@@ -99,9 +104,6 @@ Object.hasOwnProperty = () => 1;
       case "tabindex":
       case "title":
         break;
-      case "class":
-        this.className = b;
-        break;
       case "height":
       case "hidden":
       case "href":
@@ -109,6 +111,9 @@ Object.hasOwnProperty = () => 1;
       case "src": 
       case "width":
         this[a] = b;
+        break;
+      case "class":
+        this.className = b;
         break;
       case "data-testid":
         if (b == "tracklist-row" && this.tagName == "DIV") {
