@@ -3,6 +3,7 @@ isFinite =
 Number.isFinite =
 Object.hasOwn =
 Object.hasOwnProperty = () => 1;
+
 {
   let o = Object;
   o.freeze = o.seal = a => a;
@@ -48,29 +49,27 @@ Object.hasOwnProperty = () => 1;
       case "dragleave":
       case "dragover":
       case "dragstart":
+      case "drop":
       case "error":
+      case "gotpointercapture":
+      case "lostpointercapture":
+      case "mozfullscreenchange":
       case "paste":
+      case "stalled":
       case "touchcancel":
       case "touchend":
       case "touchmove":
       case "touchstart":
+      case "visibilitychange":
+      case "webkitfullscreenchange":
         break;
       default:
         addEventListener.call(this, a, b, c);
     }
   };
+  
   HTMLElement.prototype.setAttribute = function (a, b) {
     switch (a) {
-      case "class":
-        this.className = b;
-        break;
-      case "height":
-      case "href":
-      case "id":
-      case "src": 
-      case "width":
-        this[a] = b;
-        break;
       case "alt":
       case "aria-checked":
    // case "aria-colcount":
@@ -94,10 +93,22 @@ Object.hasOwnProperty = () => 1;
       case "dir":
       case "draggable":
       case "lang":
+      case "line-clamp":
       case "loading":
       case "role":
       case "tabindex":
       case "title":
+        break;
+      case "class":
+        this.className = b;
+        break;
+      case "height":
+      case "hidden":
+      case "href":
+      case "id":
+      case "src": 
+      case "width":
+        this[a] = b;
         break;
       case "data-testid":
         if (b == "tracklist-row" && this.tagName == "DIV") {
