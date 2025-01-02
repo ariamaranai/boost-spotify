@@ -86,6 +86,7 @@ Object.hasOwnProperty = () => 1;
       case "aria-valuetext":
       case "data-webpack":
       case "dateTime":
+      case "disabled":
       case "dir":
       case "draggable":
       case "lang":
@@ -99,6 +100,9 @@ Object.hasOwnProperty = () => 1;
       case "hidden":
       case "href":
       case "id":
+      case "max":
+      case "min":
+      case "step":
       case "src": 
       case "width":
         this[a] = b;
@@ -119,8 +123,12 @@ Object.hasOwnProperty = () => 1;
           }
         }
       default:
+        console.log(a);
         Element.prototype.setAttribute.call(this, a, b);
       }
+  }
+  HTMLElement.prototype.removeAttribute = function (a, b) {
+    a != "disabled" && Element.prototype.setAttribute.call(this, a, b)
   }
   o = Response.prototype.json;
   Response.prototype.json = async function (a, b) {
