@@ -123,7 +123,6 @@ Object.hasOwnProperty = () => 1;
           }
         }
       default:
-        console.log(a);
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
