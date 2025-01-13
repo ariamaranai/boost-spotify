@@ -3,10 +3,15 @@ isFinite =
 Number.isFinite =
 Object.hasOwn =
 Object.hasOwnProperty = () => 1;
+
 {
   let o = Object;
-  o.freeze = o.seal = a => a;
-  Math.random = o.isFrozen = o.isSealed = () => 0;
+  o.freeze =
+  o.seal = a => a;
+  o.isFrozen =
+  o.isSealed =
+  Math.random =
+  Element.prototype.hasAttribute = () => 0;
 
   let e = document.createElement("b");
   e.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
@@ -28,6 +33,7 @@ Object.hasOwnProperty = () => 1;
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : 0;
+
   Node.prototype.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
@@ -53,6 +59,7 @@ Object.hasOwnProperty = () => 1;
       case "touchmove":
       case "touchstart":
       case "visibilitychange":
+      case "volumechange":
       case "webkitfullscreenchange":
         break;
       default:
