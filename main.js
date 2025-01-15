@@ -4,6 +4,13 @@ Number.isFinite =
 Object.hasOwn =
 Object.hasOwnProperty = () => 1;
 
+RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
+  apply: (a, b, c) =>
+    typeof b == "function" ||
+    b == "@webgate/gabo-receiver-service/public/v3/events" ||
+      Reflect.apply(a, b, c)
+});
+
 {
   let o = Object;
   o.freeze =
@@ -12,10 +19,10 @@ Object.hasOwnProperty = () => 1;
   o.isSealed =
   Math.random =
   Element.prototype.hasAttribute = () => 0;
+  o.defineProperty(navigator, "userAgent", { value: " " });
 
   let e = document.createElement("b");
   e.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
-
   let buf = {};
   let toLocale = v => {
     let n = v.playcount || "";
@@ -26,7 +33,7 @@ Object.hasOwnProperty = () => 1;
     : l < 10 ? n.slice(0, l - 6) + "," + n.slice(-6, -3) + "," + n.slice(-3)
     : (+n).toLocaleString();
     return v;
-  };
+  }
   let fet = fetch;
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
@@ -37,6 +44,9 @@ Object.hasOwnProperty = () => 1;
   Node.prototype.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
+      case "compositionend":
+      case "compositionstart":
+      case "compositionupdate":
       case "copy":
       case "cut":
       case "dblclick":
@@ -51,8 +61,17 @@ Object.hasOwnProperty = () => 1;
       case "error":
       case "gotpointercapture":
       case "lostpointercapture":
+      case "mouseenter":
+      case "mouseleave":
+      case "mouseout":
+      case "mouseover":
       case "mozfullscreenchange":
       case "paste":
+      case "pointercancel":
+      case "pointerenter":
+      case "pointerleave":
+      case "pointerout":
+      case "pointerover":
       case "stalled":
       case "touchcancel":
       case "touchend":
@@ -132,9 +151,6 @@ Object.hasOwnProperty = () => 1;
       default:
         Element.prototype.setAttribute.call(this, a, b);
       }
-  }
-  HTMLElement.prototype.removeAttribute = function (a, b) {
-    a != "disabled" && Element.prototype.setAttribute.call(this, a, b)
   }
   o = Response.prototype.json;
   Response.prototype.json = async function (a, b) {
