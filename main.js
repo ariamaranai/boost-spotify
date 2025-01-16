@@ -5,10 +5,12 @@ Object.hasOwn =
 Object.hasOwnProperty = () => 1;
 
 RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
-  apply: (a, b, c) =>
-    typeof b == "function" ||
-    b == "@webgate/gabo-receiver-service/public/v3/events" ||
-      Reflect.apply(a, b, c)
+  apply: (a, b, c) => {
+    let value = c[0];
+    return typeof value == "function" ||
+      value == "@webgate/gabo-receiver-service/public/v3/events" ||
+        Reflect.apply(a, b, c)
+  }
 });
 
 {
@@ -19,7 +21,9 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   o.isSealed =
   Math.random =
   Element.prototype.hasAttribute = () => 0;
-  o.defineProperty(navigator, "userAgent", { value: " " });
+  o.defineProperty(navigator, "userAgent", {
+    value: " "
+  });
 
   let e = document.createElement("b");
   e.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
