@@ -13,6 +13,8 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   }
 });
 
+navigator.sendBeacon =()=> alert(1);
+
 {
   let o = Object;
   o.freeze =
@@ -64,6 +66,9 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
       case "drop":
       case "error":
       case "gotpointercapture":
+      case "keydown":
+      case "keypress":
+      case "keyup":
       case "lostpointercapture":
       case "mouseenter":
       case "mouseleave":
@@ -76,6 +81,7 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
       case "pointerleave":
       case "pointerout":
       case "pointerover":
+      case "scroll":
       case "stalled":
       case "touchcancel":
       case "touchend":
