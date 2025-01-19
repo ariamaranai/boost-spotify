@@ -13,8 +13,6 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   }
 });
 
-navigator.sendBeacon =()=> alert(1);
-
 {
   let o = Object;
   o.freeze =
