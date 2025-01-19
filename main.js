@@ -21,6 +21,7 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   o.isSealed =
   Math.random =
   Element.prototype.hasAttribute = () => 0;
+
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
@@ -160,6 +161,13 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
+
+  Object.defineProperties(HTMLScriptElement.prototype, {
+    charset: {},
+    onerror: {},
+    timeout: {}
+  });
+
   o = Response.prototype.json;
   Response.prototype.json = async function (a, b) {
     let result = await o.call(this, a, b);
