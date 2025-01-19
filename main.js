@@ -13,6 +13,11 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   }
 });
 
+HTMLBodyElement.prototype.appendChild = a =>
+  a.id == "ad-tracking-pixel" ? 0 :
+  a.async ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
+          : Node.prototype.appendChild.call(document.body, a);
+
 {
   let o = Object;
   o.freeze =
@@ -24,6 +29,11 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
 
   o.defineProperty(navigator, "userAgent", {
     value: " "
+  });
+  o.defineProperties(HTMLScriptElement.prototype, {
+    charset: {},
+    onerror: {},
+    timeout: {}
   });
 
   let e = document.createElement("b");
@@ -161,13 +171,6 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
-
-  Object.defineProperties(HTMLScriptElement.prototype, {
-    charset: {},
-    onerror: {},
-    timeout: {}
-  });
-
   o = Response.prototype.json;
   Response.prototype.json = async function (a, b) {
     let result = await o.call(this, a, b);
