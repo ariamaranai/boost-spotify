@@ -129,6 +129,7 @@ HTMLBodyElement.prototype.appendChild = a =>
    // case "aria-setsize":
       case "aria-sort":
       case "aria-valuetext":
+      case "data-test-position": //
       case "data-webpack":
       case "dateTime":
       case "disabled":
@@ -168,6 +169,7 @@ HTMLBodyElement.prototype.appendChild = a =>
           }
         }
       default:
+        console.log(a, b);
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
