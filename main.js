@@ -129,6 +129,8 @@ HTMLBodyElement.prototype.appendChild = a =>
    // case "aria-setsize":
       case "aria-sort":
       case "aria-valuetext":
+      case "data-encore-id": //
+      case "data-is-icon-only": //
       case "data-test-position": //
       case "data-webpack":
       case "dateTime":
@@ -168,8 +170,8 @@ HTMLBodyElement.prototype.appendChild = a =>
             } 
           }
         }
+        break;
       default:
-        console.log(a, b);
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
