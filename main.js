@@ -8,6 +8,7 @@ RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
   apply: (a, b, c) => {
     let value = c[0];
     return typeof value == "function" ||
+      value != " " && // ua
       value == "@webgate/gabo-receiver-service/public/v3/events" ||
         Reflect.apply(a, b, c)
   }
@@ -129,9 +130,11 @@ HTMLBodyElement.prototype.appendChild = a =>
    // case "aria-setsize":
       case "aria-sort":
       case "aria-valuetext":
-      case "data-encore-id": //
-      case "data-is-icon-only": //
-      case "data-test-position": //
+      case "data-encore-id":
+      case "data-is-icon-only":
+      case "data-overlayscrollbars":
+      case "data-overlayscrollbars-viewport":
+      case "data-test-position":
       case "data-webpack":
       case "dateTime":
       case "disabled":
@@ -172,6 +175,7 @@ HTMLBodyElement.prototype.appendChild = a =>
         }
         break;
       default:
+        console.log(a);
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
