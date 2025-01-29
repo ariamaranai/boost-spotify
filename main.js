@@ -39,7 +39,7 @@ HTMLBodyElement.prototype.appendChild = a =>
 
   let e = document.createElement("b");
   e.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
-  let buf = {};
+  let buf = new Map;
   let toLocale = v => {
     let n = v.playcount || "";
     let l = n.length;
@@ -51,11 +51,15 @@ HTMLBodyElement.prototype.appendChild = a =>
     return v;
   }
   let fet = fetch;
+  let dummyThen = {
+    then: ()=> dummyThen,
+    catch: () => dummyThen
+  };
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
-    a.slice(40, 48) != "masthead" ? fet(a, b) : 0;
+    a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
 
   Node.prototype.addEventListener = function (a, b, c) {
     switch (a) {
@@ -124,17 +128,22 @@ HTMLBodyElement.prototype.appendChild = a =>
       case "aria-modal":
    // case "aria-rowcount":
    // case "aria-rowindex":
+      case "aria-owns":
       case "aria-posinset":
       case "aria-pressed":
       case "aria-selected":
    // case "aria-setsize":
       case "aria-sort":
       case "aria-valuetext":
+      case "data-animation":
       case "data-encore-id":
       case "data-is-icon-only":
       case "data-overlayscrollbars":
       case "data-overlayscrollbars-viewport":
+      case "data-right-sidebar-hidden":
       case "data-test-position":
+      case "data-testadtype":
+      case "data-theme":
       case "data-webpack":
       case "dateTime":
       case "disabled":
@@ -175,7 +184,6 @@ HTMLBodyElement.prototype.appendChild = a =>
         }
         break;
       default:
-        console.log(a);
         Element.prototype.setAttribute.call(this, a, b);
       }
   }
