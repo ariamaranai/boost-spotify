@@ -4,16 +4,6 @@ Number.isFinite =
 Object.hasOwn =
 Object.hasOwnProperty = () => 1;
 
-RegExp.prototype.test = new Proxy(RegExp.prototype.test, {
-  apply: (a, b, c) => {
-    let value = c[0];
-    return typeof value == "function" ||
-      value != " " && // ua
-      value == "@webgate/gabo-receiver-service/public/v3/events" ||
-        Reflect.apply(a, b, c)
-  }
-});
-
 HTMLBodyElement.prototype.appendChild = a =>
   a.id == "ad-tracking-pixel" ? 0 :
   a.async ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
@@ -21,12 +11,14 @@ HTMLBodyElement.prototype.appendChild = a =>
 
 {
   let o = Object;
+  let p = Element.prototype;
+
   o.freeze =
   o.seal = a => a;
   o.isFrozen =
   o.isSealed =
   Math.random =
-  Element.prototype.hasAttribute = () => 0;
+  p.hasAttribute = () => 0;
 
   o.defineProperty(navigator, "userAgent", {
     value: " "
@@ -50,6 +42,7 @@ HTMLBodyElement.prototype.appendChild = a =>
     : (+n).toLocaleString();
     return v;
   }
+
   let fet = fetch;
   let dummyThen = {
     then: ()=> dummyThen,
@@ -61,7 +54,7 @@ HTMLBodyElement.prototype.appendChild = a =>
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
 
-  Node.prototype.addEventListener = function (a, b, c) {
+  p.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
       case "compositionend":
@@ -106,10 +99,11 @@ HTMLBodyElement.prototype.appendChild = a =>
       case "webkitfullscreenchange":
         break;
       default:
-        addEventListener.call(this, a, b, c);
+        return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
-  HTMLElement.prototype.setAttribute = function (a, b) {
+  let setAttr = p.setAttribute;
+  p.setAttribute = function (a, b) {
     switch (a) {
       case "alt":
       case "aria-checked":
@@ -138,8 +132,8 @@ HTMLBodyElement.prototype.appendChild = a =>
       case "data-animation":
       case "data-encore-id":
       case "data-is-icon-only":
-      case "data-overlayscrollbars":
-      case "data-overlayscrollbars-viewport":
+   // case "data-overlayscrollbars":
+   // case "data-overlayscrollbars-viewport":
       case "data-right-sidebar-hidden":
       case "data-test-position":
       case "data-testadtype":
@@ -158,7 +152,6 @@ HTMLBodyElement.prototype.appendChild = a =>
         break;
       case "height":
       case "hidden":
-      case "href":
       case "id":
       case "max":
       case "min":
@@ -167,8 +160,9 @@ HTMLBodyElement.prototype.appendChild = a =>
       case "width":
         this[a] = b;
         break;
-      case "class":
-        this.className = b;
+      case "href":
+        this.href = b;
+        setAttr.call(this, "style", "display:contents");
         break;
       case "data-testid":
         if (b == "tracklist-row" && this.tagName == "DIV") {
@@ -184,11 +178,19 @@ HTMLBodyElement.prototype.appendChild = a =>
         }
         break;
       default:
-        Element.prototype.setAttribute.call(this, a, b);
+        setAttr.call(this, a, b);
       }
   }
-  o = Response.prototype.json;
-  Response.prototype.json = async function (a, b) {
+
+  let test = (p = RegExp.prototype).test;
+  p.test = function (a) {
+    return typeof a == "function" || a != " " && // ua
+      a == "@webgate/gabo-receiver-service/public/v3/events" ||
+      test.call(this, a)
+  }
+
+  o = (p = Response.prototype).json;
+  p.json = async function (a, b) {
     let result = await o.call(this, a, b);
     let data = result.data;
     let items =
