@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "spoticount",
+  "name": "boost-spotify",
   "version": "0",
-  "description": "Show spotify playcount and boosting",
+  "description": "Boost and show playcount spotify.com",
   "icons": {
     "128": "128.png"
   },
-  "content_scripts":[{
+  "content_scripts": [{
     "js": ["main.js"],
     "matches": ["https://open.spotify.com/*"],
     "world": "MAIN",
