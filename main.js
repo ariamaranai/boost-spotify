@@ -12,6 +12,7 @@ HTMLBodyElement.prototype.appendChild = a =>
 {
   let o = Object;
   let p = Element.prototype;
+  let setter = { set: () => 0 };
 
   o.freeze =
   o.seal = a => a;
@@ -24,9 +25,9 @@ HTMLBodyElement.prototype.appendChild = a =>
     value: " "
   });
   o.defineProperties(HTMLScriptElement.prototype, {
-    charset: {},
-    onerror: {},
-    timeout: {}
+    charset: setter,
+    onerror: setter,
+    timeout: setter
   });
 
   let e = document.createElement("b");
