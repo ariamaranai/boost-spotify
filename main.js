@@ -1,17 +1,8 @@
 XMLHttpRequest = 0;
-isFinite =
-Number.isFinite =
-Object.hasOwn =
-Object.hasOwnProperty = () => 1;
-
-HTMLBodyElement.prototype.appendChild = a =>
-  a.id == "ad-tracking-pixel" ? 0 :
-  a.async ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
-          : Node.prototype.appendChild.call(document.body, a);
-
 {
   let o = Object;
   let p = Element.prototype;
+  let d = document;
   let setter = { set: () => 0 };
 
   o.freeze =
@@ -20,6 +11,11 @@ HTMLBodyElement.prototype.appendChild = a =>
   o.isSealed =
   Math.random =
   p.hasAttribute = () => 0;
+
+  isFinite =
+  Number.isFinite =
+  o.hasOwn =
+  o.hasOwnProperty = () => 1;
 
   o.defineProperty(navigator, "userAgent", {
     value: " "
@@ -30,8 +26,19 @@ HTMLBodyElement.prototype.appendChild = a =>
     timeout: setter
   });
 
-  let e = document.createElement("b");
-  e.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
+  HTMLBodyElement.prototype.appendChild = a =>
+    a.id == "ad-tracking-pixel" ? 0 :
+    a.async ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
+            : Node.prototype.appendChild.call(d.body, a);
+
+            
+  let createElement = d.createElement.bind(d);
+  let ae = createElement("a");
+  let be = createElement("b");
+  ae.setAttribute("style", "display:contents");
+  be.className = "encore-text-body-small HxDMwNr5oCxTOyqt85gi";
+  d.createElement = a => a == "a" ? ae.cloneNode() : createElement(a);
+
   let buf = new Map;
   let toLocale = v => {
     let n = v.playcount || "";
@@ -153,6 +160,7 @@ HTMLBodyElement.prototype.appendChild = a =>
         break;
       case "height":
       case "hidden":
+      case "href":
       case "id":
       case "max":
       case "min":
@@ -161,20 +169,13 @@ HTMLBodyElement.prototype.appendChild = a =>
       case "width":
         this[a] = b;
         break;
-      case "href":
-        this.href = b;
-        setAttr.call(this, "style", "display:contents");
-        break;
       case "data-testid":
         if (b == "tracklist-row" && this.tagName == "DIV") {
           let items = buf[location.pathname.slice(-22)];
           if (items) {
-            let uri = this.querySelector("a").href.slice(-22);
-            let n = items.find(v => v?.uri?.slice(-22) == uri)?.playcount;
-            if (n) {
-              let parent = this.lastChild;
-              parent.insertBefore(e.cloneNode(), parent.firstChild).textContent = n;
-            } 
+            let u = this.querySelector("a").href.slice(-22);
+            let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
+            n && ((u = this.lastChild).insertBefore(be.cloneNode(), u.firstChild).textContent = n)
           }
         }
         break;
@@ -199,7 +200,8 @@ HTMLBodyElement.prototype.appendChild = a =>
         ?? data?.playlistV2?.content?.items?.map(v => toLocale(v?.itemV2?.data));
     if (items) {
       let uri = location.pathname.slice(-22);
-      buf[uri] = buf[uri] ? buf[uri].concat(items) : items; 
+      let itemBuf = buf[uri];
+      buf[uri] = itemBuf ? itemBuf.concat(items) : items;
     }
     return result;
   }
