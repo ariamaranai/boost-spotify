@@ -113,50 +113,21 @@ XMLHttpRequest = 0;
   let setAttr = p.setAttribute;
   p.setAttribute = function (a, b) {
     switch (a) {
-      case "alt":
-      case "aria-checked":
    // case "aria-colcount":
    // case "aria-colindex":
-      case "aria-controls":
-      case "aria-describedby":
-      case "aria-disabled":
-      case "aria-expanded":
-      case "aria-haspopup":
-      case "aria-hidden":
-      case "aria-label":
-      case "aria-labelledby":
-      case "aria-level":
       case "aria-live":
-      case "aria-modal":
    // case "aria-rowcount":
    // case "aria-rowindex":
-      case "aria-owns":
-      case "aria-posinset":
-      case "aria-pressed":
-      case "aria-selected":
    // case "aria-setsize":
       case "aria-sort":
-      case "aria-valuetext":
       case "data-animation":
       case "data-encore-id":
-      case "data-is-icon-only":
    // case "data-overlayscrollbars":
    // case "data-overlayscrollbars-viewport":
-      case "data-right-sidebar-hidden":
-      case "data-test-position":
-      case "data-testadtype":
       case "data-theme":
       case "data-webpack":
-      case "dateTime":
-      case "disabled":
-      case "dir":
       case "draggable":
       case "lang":
-      case "line-clamp":
-      case "loading":
-      case "role":
-      case "tabindex":
-      case "title":
         break;
       case "height":
       case "hidden":
@@ -182,6 +153,64 @@ XMLHttpRequest = 0;
       default:
         setAttr.call(this, a, b);
       }
+  }
+  let hasOwnProperty = (p = o.prototype).hasOwnProperty;
+  p.hasOwnProperty = function (a) {
+    switch (a) {
+      case "adsCoreConnector":
+      case "adsEnabled":
+      case "alt":
+      case "aria-activedescendant":
+      case "aria-checked":
+      case "aria-controls":
+      case "aria-describedby":
+      case "aria-disabled":
+      case "aria-expanded":
+      case "aria-haspopup":
+      case "aria-hidden":
+      case "aria-label":
+      case "aria-labelledby":
+      case "aria-level":
+      case "aria-modal":
+      case "aria-owns":
+      case "aria-posinset":
+      case "aria-pressed":
+      case "aria-selected":
+      case "aria-valuetext":
+      case "ariaHidden":
+      case "ariaPauseLabel":
+      case "ariaPlayLabel":
+      case "borderRadius":
+      case "data-is-icon-only":
+      case "data-right-sidebar-hidden":
+      case "data-testadtype":
+      case "data-test-position":
+      case "dateTime":
+      case "dir":
+      case "disabled":
+      case "isDownloadable":
+      case "isOffline":
+      case "isPremium":
+      case "line-clamp":
+      case "lineClamp":
+      case "loading":
+      case "onDoubleClick":
+      case "onError":
+      case "onTouchEnd":
+      case "onTouchStart":
+      case "referrer":
+      case "role":
+      case "shiftKey":
+      case "spellCheck":
+      case "tabIndex":
+      case "title":
+        return 0;
+      case "isDesktop":
+        return 1;
+      default:
+        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
+        return hasOwnProperty.call(this, a);
+    }
   }
 
   let test = (p = RegExp.prototype).test;
