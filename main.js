@@ -1,27 +1,7 @@
 XMLHttpRequest = 0;
 {
-  let
-  o = Object,
-  p = Element.prototype,
-  setter = { set: () => 0 },
-  be = document.createElement("dt"),
-  buf = new Map,
-  toLocale = v => {
-    let n = v.playcount || "", l = n.length;
-    v.playcount =
-      l < 4 ? n
-    : l < 7 ? n.slice(0, l - 3) + "," + n.slice(-3)
-    : l < 10 ? n.slice(0, l - 6) + "," + n.slice(-6, -3) + "," + n.slice(-3)
-    : (+n).toLocaleString();
-    return v;
-  },
-  fet = fetch,
-  dummyThen = {
-    then: ()=> dummyThen,
-    catch: () => dummyThen
-  },
-  test = RegExp.prototype.test;
-
+  let o = Object;
+  let p = Element.prototype;
   o.freeze =
   o.seal = a => a;
   o.isFrozen =
@@ -37,19 +17,26 @@ XMLHttpRequest = 0;
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
+  let setter = { set: () => 0 };
   o.defineProperties(HTMLScriptElement.prototype, {
     charset: setter,
     onerror: setter,
     timeout: setter
   });
 
+  let dt = document.createElement("dt");
   HTMLBodyElement.prototype.appendChild = a => a.id == "ad-tracking-pixel" ? 0 :
     a.async
       ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
       : Node.prototype.appendChild.call(document.body, a);
             
-  be.setAttribute("style", "font-size:14px");
+  dt.setAttribute("style", "font-size:14px");
 
+  let fet = fetch;
+  let dummyThen = {
+    then: ()=> dummyThen,
+    catch: () => dummyThen
+  }
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
@@ -110,6 +97,7 @@ XMLHttpRequest = 0;
     case "aria-rowindex":
     case "aria-setsize":
   */
+  let buf = new Map;
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     if (b == "tracklist-row") {
       let items = buf[location.pathname.slice(-22)];
@@ -117,7 +105,7 @@ XMLHttpRequest = 0;
         let u = this.querySelector("a").href.slice(-22);
         let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
         n && ((u = this.lastChild).insertBefore(
-          be.cloneNode(), u.firstChild).textContent = n)
+          dt.cloneNode(), u.firstChild).textContent = n)
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
@@ -206,6 +194,15 @@ XMLHttpRequest = 0;
     }
   }
 
+  let toLocale = v => {
+    let n = v.playcount || "", l = n.length;
+    v.playcount =
+      l < 4 ? n
+    : l < 7 ? n.slice(0, l - 3) + "," + n.slice(-3)
+    : l < 10 ? n.slice(0, l - 6) + "," + n.slice(-6, -3) + "," + n.slice(-3)
+    : (+n).toLocaleString();
+    return v;
+  }
   o = (p = Response.prototype).json;
   p.json = async function (a, b) {
     let result = await o.call(this, a, b);
@@ -221,7 +218,8 @@ XMLHttpRequest = 0;
     return result;
   }
 
-  RegExp.prototype.test = function (a) {
+  let test = (p = RegExp.prototype).test;
+  p.test = function (a) {
     return typeof a == "function" || a != " " && // ua
       a == "@webgate/gabo-receiver-service/public/v3/events" ||
       test.call(this, a)
