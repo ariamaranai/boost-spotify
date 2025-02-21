@@ -112,10 +112,15 @@ XMLHttpRequest = 0;
   let hasOwnProperty = (p = o.prototype).hasOwnProperty;
   p.hasOwnProperty = function (a) {
     switch (a) {
+      case "App-Platform":
       case "adsCoreConnector":
       case "adsEnabled":
       case "alt":
       case "alternativeText":
+      case "animateClassName":
+      case "animateState":
+      case "animated":
+      case "animation":
       case "aria-activedescendant":
       case "aria-checked":
       case "aria-controls":
@@ -165,6 +170,9 @@ XMLHttpRequest = 0;
       case "isDownloadable":
       case "isOffline":
       case "isPremium":
+      case "label":
+      case "labelName":
+      case "labelText":
       case "line-clamp":
       case "lineClamp":
       case "loadOffline":
@@ -177,6 +185,7 @@ XMLHttpRequest = 0;
       case "playAriaLabel":
       case "referrer":
    // case "role":
+      case "shape":
       case "shiftKey":
       case "showDelay":
       case "spellCheck":
