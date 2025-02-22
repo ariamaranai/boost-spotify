@@ -110,6 +110,7 @@ XMLHttpRequest = 0;
     } else Element.prototype.setAttribute.call(this, a, b);
   }
   let hasOwnProperty = (p = o.prototype).hasOwnProperty;
+  var kkk = {};
   p.hasOwnProperty = function (a) {
     switch (a) {
       case "App-Platform":
@@ -154,12 +155,14 @@ XMLHttpRequest = 0;
       case "backgroundRepeat":
       case "backgroundSize":
       case "borderRadius":
+      case "color":
       case "data-is-icon-only":
       case "data-right-sidebar-hidden":
       case "data-testadtype":
       case "data-test-position":
       case "dateTime":
       case "dir":
+      case "direction":
       case "disabled":
       case "error":
       case "errorMessage":
@@ -191,6 +194,7 @@ XMLHttpRequest = 0;
       case "spellCheck":
       case "tabIndex":
       case "tabindex":
+      case "textTransform":
       case "theme":
    // case "title":
         return 0;
@@ -198,7 +202,7 @@ XMLHttpRequest = 0;
       case "isWebPSupported":
         return 1;
       default:
-        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
+        typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
         return hasOwnProperty.call(this, a);
     }
   }
