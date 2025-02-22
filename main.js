@@ -110,7 +110,7 @@ XMLHttpRequest = 0;
     } else Element.prototype.setAttribute.call(this, a, b);
   }
   let hasOwnProperty = (p = o.prototype).hasOwnProperty;
-  var kkk = {};
+  // var kkk = {};
   p.hasOwnProperty = function (a) {
     switch (a) {
       case "App-Platform":
@@ -202,7 +202,7 @@ XMLHttpRequest = 0;
       case "isWebPSupported":
         return 1;
       default:
-        typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
+        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
         return hasOwnProperty.call(this, a);
     }
   }
