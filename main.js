@@ -176,6 +176,7 @@ XMLHttpRequest = 0;
       case "isDownloadable":
       case "isOffline":
       case "isPremium":
+      case "isTrusted":
       case "label":
       case "labelName":
       case "labelText":
@@ -196,6 +197,7 @@ XMLHttpRequest = 0;
       case "referrer":
    // case "role":
       case "scrollbars":
+      case "semanticColor":
       case "shape":
       case "shiftKey":
       case "showDelay":
