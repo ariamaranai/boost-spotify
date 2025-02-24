@@ -11,7 +11,6 @@ XMLHttpRequest = 0;
 
   isFinite =
   Number.isFinite =
-  o.hasOwn =
   o.hasOwnProperty = () => 1;
 
   o.defineProperty(navigator, "userAgent", {
@@ -42,7 +41,6 @@ XMLHttpRequest = 0;
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
-
   p.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
@@ -109,10 +107,15 @@ XMLHttpRequest = 0;
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
-  let hasOwnProperty = (p = o.prototype).hasOwnProperty;
   // var kkk = {};
-  p.hasOwnProperty = function (a) {
+  o.prototype.hasOwnProperty = function (a) {
     switch (a) {
+      case "$active":
+      case "$activeBackgroundColor":
+      case "$hover":
+      case "$hoverAnimationDuration":
+      case "$hoverBackgroundColor":
+      case "$borderRadius":
       case "App-Platform":
       case "adsCoreConnector":
       case "adsEnabled":
@@ -182,12 +185,17 @@ XMLHttpRequest = 0;
       case "loading":
       case "onDoubleClick":
       case "onError":
+      case "onMouseEnter":
+      case "onMouseLeave":
+      case "onMouseOut":
+      case "onMouseOver":
       case "onTouchEnd":
       case "onTouchStart":
       case "placeholder":
       case "playAriaLabel":
       case "referrer":
    // case "role":
+      case "scrollbars":
       case "shape":
       case "shiftKey":
       case "showDelay":
@@ -203,7 +211,7 @@ XMLHttpRequest = 0;
         return 1;
       default:
         // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
-        return hasOwnProperty.call(this, a);
+        return o.hasOwn(this, a);
     }
   }
 
@@ -216,9 +224,9 @@ XMLHttpRequest = 0;
     : (+n).toLocaleString();
     return v;
   }
-  o = (p = Response.prototype).json;
+  let toJson = (p = Response.prototype).json;
   p.json = async function (a, b) {
-    let result = await o.call(this, a, b);
+    let result = await toJson.call(this, a, b);
     let data = result.data;
     let items =
       data?.albumUnion?.tracksV2?.items?.map(v => toLocale(v?.track))
@@ -230,7 +238,6 @@ XMLHttpRequest = 0;
     }
     return result;
   }
-
   let test = (p = RegExp.prototype).test;
   p.test = function (a) {
     return typeof a == "function" || a != " " && // ua
