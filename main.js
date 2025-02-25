@@ -99,7 +99,7 @@ XMLHttpRequest = 0;
       case "$hoverAnimationDuration":
       case "$hoverBackgroundColor":
       case "$borderRadius":
-      case "App-Platform":
+      // case "App-Platform":
       case "adsCoreConnector":
       case "adsEnabled":
       case "alt":
