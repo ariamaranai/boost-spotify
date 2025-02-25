@@ -1,3 +1,4 @@
+/*
 {
   let setter = { set: () => 0 };
   o.defineProperties(HTMLScriptElement.prototype, {
@@ -6,7 +7,6 @@
     timeout: setter
   });
 }
-/*
   case "aria-colcount":
   case "aria-colindex":
   case "data-overlayscrollbars":
