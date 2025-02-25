@@ -16,12 +16,6 @@ XMLHttpRequest = 0;
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
-  let setter = { set: () => 0 };
-  o.defineProperties(HTMLScriptElement.prototype, {
-    charset: setter,
-    onerror: setter,
-    timeout: setter
-  });
   let dt = document.createElement("dt");
   HTMLBodyElement.prototype.appendChild = a => a.id == "ad-tracking-pixel" ? 0 :
     a.async
@@ -84,15 +78,6 @@ XMLHttpRequest = 0;
         return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
-  /*
-    case "aria-colcount":
-    case "aria-colindex":
-    case "data-overlayscrollbars":
-    case "data-overlayscrollbars-viewport":
-    case "aria-rowcount":
-    case "aria-rowindex":
-    case "aria-setsize":
-  */
   let buf = new Map;
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     if (b == "tracklist-row") {
