@@ -16,19 +16,21 @@ XMLHttpRequest = 0;
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
+/*
   let setter = { set: () => 0 };
   o.defineProperties(HTMLScriptElement.prototype, {
     charset: setter,
     onerror: setter,
     timeout: setter
   });
-
+*/
   let dt = document.createElement("dt");
+/*
   HTMLBodyElement.prototype.appendChild = a => a.id == "ad-tracking-pixel" ? 0 :
     a.async
       ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
       : Node.prototype.appendChild.call(document.body, a);
-            
+*/          
   dt.setAttribute("style", "font-size:14px");
 
   let fet = fetch;
@@ -41,6 +43,7 @@ XMLHttpRequest = 0;
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
+  /*
   p.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
@@ -85,7 +88,7 @@ XMLHttpRequest = 0;
       default:
         return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
-  }
+  }*/
   /*
     case "aria-colcount":
     case "aria-colindex":
@@ -108,6 +111,7 @@ XMLHttpRequest = 0;
     } else Element.prototype.setAttribute.call(this, a, b);
   }
   // var kkk = {};
+  /*
   o.prototype.hasOwnProperty = function (a) {
     switch (a) {
       case "$active":
@@ -195,6 +199,7 @@ XMLHttpRequest = 0;
       case "placeholder":
       case "playAriaLabel":
       case "referrer":
+      case "rel":
    // case "role":
       case "scrollbars":
       case "semanticColor":
@@ -215,8 +220,7 @@ XMLHttpRequest = 0;
         // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
         return o.hasOwn(this, a);
     }
-  }
-
+  }*/
   let toLocale = v => {
     let n = v.playcount || "", l = n.length;
     v.playcount =
