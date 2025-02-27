@@ -33,7 +33,8 @@ XMLHttpRequest = 0;
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
-  p.addEventListener = function (a, b, c) {
+
+    p.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
       case "compositionend":
@@ -73,7 +74,7 @@ XMLHttpRequest = 0;
       case "visibilitychange":
       case "volumechange":
       case "webkitfullscreenchange":
-        break;
+        return 0;
       default:
         return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
@@ -90,7 +91,7 @@ XMLHttpRequest = 0;
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
-  // var kkk = {};
+  var kkk = {};
   o.prototype.hasOwnProperty = function (a) {
     switch (a) {
       case "$active":
@@ -133,6 +134,7 @@ XMLHttpRequest = 0;
       case "ariaLabelledBy":
       case "ariaPauseLabel":
       case "ariaPlayLabel":
+      case "autoFocus":
       case "backgroundColor":
       case "backgroundImage":
       case "backgroundImageUrl":
@@ -177,6 +179,7 @@ XMLHttpRequest = 0;
       case "onTouchStart":
       case "placeholder":
       case "playAriaLabel":
+      case "reason":
       case "referrer":
       case "rel":
    // case "role":
@@ -196,7 +199,7 @@ XMLHttpRequest = 0;
       case "isWebPSupported":
         return 1;
       default:
-        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
+        typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
         return o.hasOwn(this, a);
     }
   }
