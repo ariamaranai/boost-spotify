@@ -91,7 +91,7 @@ XMLHttpRequest = 0;
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
-  var kkk = {};
+  // var kkk = {};
   o.prototype.hasOwnProperty = function (a) {
     switch (a) {
       case "$active":
@@ -101,6 +101,9 @@ XMLHttpRequest = 0;
       case "$hoverBackgroundColor":
       case "$borderRadius":
       // case "App-Platform":
+      case "Accept":
+      case "Accept-Language":
+      case "Content-Type":
       case "adsCoreConnector":
       case "adsEnabled":
       case "alt":
@@ -199,7 +202,7 @@ XMLHttpRequest = 0;
       case "isWebPSupported":
         return 1;
       default:
-        typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
+        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
         return o.hasOwn(this, a);
     }
   }
