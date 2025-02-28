@@ -6,6 +6,16 @@
   "icons": {
     "128": "128.png"
   },
+  "permissions": [
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "0",
+      "path": "0.json",
+      "enabled": true
+    }]
+  },
   "content_scripts": [{
     "js": ["main.js"],
     "matches": ["https://open.spotify.com/*"],
