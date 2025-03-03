@@ -34,7 +34,7 @@ XMLHttpRequest = 0;
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
     a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
 
-    p.addEventListener = function (a, b, c) {
+  p.addEventListener = function (a, b, c) {
     switch (a) {
       case "auxclick":
       case "compositionend":
@@ -76,10 +76,10 @@ XMLHttpRequest = 0;
       case "webkitfullscreenchange":
         return 0;
       default:
-        return EventTarget.prototype.addEventListener.call(this, a, b, c);
+        EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
-  let buf = new Map;
+  let buf = {};
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     if (b == "tracklist-row") {
       let items = buf[location.pathname.slice(-22)];
