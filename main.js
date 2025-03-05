@@ -194,6 +194,8 @@ XMLHttpRequest = 0;
       case "spellCheck":
       case "tabIndex":
       case "tabindex":
+      case "testId":
+      case "testid":
       case "textTransform":
       case "theme":
    // case "title":
