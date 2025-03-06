@@ -51,6 +51,7 @@ XMLHttpRequest = 0;
    // case "dragover":
    // case "dragstart":
    // case "drop":
+      case "encrypted":
       case "error":
       case "gotpointercapture":
       case "lostpointercapture":
@@ -73,6 +74,9 @@ XMLHttpRequest = 0;
       case "touchstart":
       case "visibilitychange":
       case "volumechange":
+      case "webkitAnimationEnd":
+      case "webkitAnimationIteration":
+      case "webkitAnimationStart":
       case "webkitfullscreenchange":
         return 0;
       default:
@@ -86,8 +90,7 @@ XMLHttpRequest = 0;
       if (items) {
         let u = this.querySelector("a").href.slice(-22);
         let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
-        n && ((u = this.lastChild).insertBefore(
-          dt.cloneNode(), u.firstChild).textContent = n)
+        n && ((u = this.lastChild).insertBefore(dt.cloneNode(), u.firstChild).textContent = n)
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
