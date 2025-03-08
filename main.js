@@ -208,7 +208,7 @@ XMLHttpRequest = 0;
         return 1;
       default:
         // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
-        return o.hasOwn(this, a);
+        return a in this;
     }
   }
   let toLocale = v => {
