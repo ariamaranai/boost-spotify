@@ -95,8 +95,8 @@ XMLHttpRequest = 0;
     } else Element.prototype.setAttribute.call(this, a, b);
   }
   // var kkk = {};
-  o.prototype.hasOwnProperty = function (a) {
-    switch (a) {
+  o.prototype.hasOwnProperty.call = (a, b) => {
+    switch (b) {
       case "$active":
       case "$activeBackgroundColor":
       case "$hover":
@@ -207,8 +207,8 @@ XMLHttpRequest = 0;
       case "isWebPSupported":
         return 1;
       default:
-        // typeof a == "string" && a.length > 2 && (kkk[a] ? ++kkk[a] : kkk[a] = 1);
-        return a in this;
+        // typeof b == "string" && b.length > 2 && (kkk[a] ? ++kkk[b] : kkk[b] = 1);
+        return b in a;
     }
   }
   let toLocale = v => {
