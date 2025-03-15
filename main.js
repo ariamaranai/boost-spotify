@@ -8,7 +8,6 @@ XMLHttpRequest = 0;
   o.isSealed =
   Math.random =
   p.hasAttribute = () => 0;
-
   isFinite =
   Number.isFinite =
   o.hasOwnProperty = () => 1;
@@ -16,11 +15,8 @@ XMLHttpRequest = 0;
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
+  
   let dt = document.createElement("dt");
-  HTMLBodyElement.prototype.appendChild = a => a.id == "ad-tracking-pixel" ? 0 :
-    a.async
-      ? (HTMLBodyElement.prototype.appendChild = Node.prototype.appendChild, 0)
-      : Node.prototype.appendChild.call(document.body, a);
   dt.setAttribute("style", "font-size:14px");
 
   let fet = fetch;
@@ -31,8 +27,8 @@ XMLHttpRequest = 0;
   fetch = (a, b) =>
     a != "https://gae2-spclient.spotify.com/gabo-receiver-service/public/v3/events" &&
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
-    a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals" &&
-    a.slice(40, 48) != "masthead" ? fet(a, b) : dummyThen;
+    a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals"
+    /* a.slice(40, 48) != "masthead" */ ? fet(a, b) : dummyThen;
 
   p.addEventListener = function (a, b, c) {
     switch (a) {
@@ -99,10 +95,11 @@ XMLHttpRequest = 0;
     switch (b) {
       case "$active":
       case "$activeBackgroundColor":
+      case "$borderRadius":
       case "$hover":
       case "$hoverAnimationDuration":
       case "$hoverBackgroundColor":
-      case "$borderRadius":
+      case "$titleGap":
       // case "App-Platform":
       case "Accept":
       case "Accept-Language":
@@ -152,6 +149,7 @@ XMLHttpRequest = 0;
       case "color":
       case "data-is-icon-only":
       case "data-right-sidebar-hidden":
+      case "data-test-uri":
       case "data-testadtype":
       case "data-test-position":
       case "dateTime":
@@ -171,11 +169,15 @@ XMLHttpRequest = 0;
       case "label":
       case "labelName":
       case "labelText":
+      case "language":
       case "line-clamp":
       case "lineClamp":
       case "loadOffline":
       case "loading":
       case "onDoubleClick":
+      case "onDragEnd":
+      case "onDragEnter":
+      case "onDragLeave":
       case "onError":
       case "onMouseEnter":
       case "onMouseLeave":
@@ -203,11 +205,13 @@ XMLHttpRequest = 0;
       case "theme":
    // case "title":
         return 0;
+      case "data-testid":
+        return a?.["data-testid"] == "tracklist-row"
       case "isDesktop":
       case "isWebPSupported":
         return 1;
       default:
-        // typeof b == "string" && b.length > 2 && (kkk[a] ? ++kkk[b] : kkk[b] = 1);
+        // typeof b == "string" && b.length > 2 && (kkk[b] ? ++kkk[b] : kkk[b] = 1);
         return b in a;
     }
   }
