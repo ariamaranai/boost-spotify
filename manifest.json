@@ -18,7 +18,7 @@
   },
   "content_scripts": [{
     "js": ["main.js"],
-    "matches": ["https://open.spotify.com/*"],
+    "matches": ["https://open.spotify.com/intl*"],
     "world": "MAIN",
     "run_at": "document_start"
   }]
