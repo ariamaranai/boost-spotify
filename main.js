@@ -153,6 +153,7 @@ XMLHttpRequest = 0;
       case "data-testadtype":
       case "data-test-position":
       case "dateTime":
+      case "debugLabel":
       case "dir":
       case "direction":
       case "disabled":
@@ -175,9 +176,9 @@ XMLHttpRequest = 0;
       case "loadOffline":
       case "loading":
       case "onDoubleClick":
-      case "onDragEnd":
-      case "onDragEnter":
-      case "onDragLeave":
+   // case "onDragEnd":
+   // case "onDragEnter":
+   // case "onDragLeave":
       case "onError":
       case "onMouseEnter":
       case "onMouseLeave":
@@ -194,6 +195,7 @@ XMLHttpRequest = 0;
       case "scrollbars":
       case "semanticColor":
       case "shape":
+      case "sharingInfo":
       case "shiftKey":
       case "showDelay":
       case "spellCheck":
