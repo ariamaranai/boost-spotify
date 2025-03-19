@@ -90,7 +90,7 @@ XMLHttpRequest = 0;
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
-  // var kkk = {};
+  //var kkk = {};
   o.prototype.hasOwnProperty.call = (a, b) => {
     switch (b) {
       case "$active":
@@ -147,6 +147,7 @@ XMLHttpRequest = 0;
       case "backgroundSize":
       case "borderRadius":
       case "color":
+      // case "dangerouslySetInnerHTML":
       case "data-is-icon-only":
       case "data-right-sidebar-hidden":
       case "data-test-uri":
@@ -206,12 +207,11 @@ XMLHttpRequest = 0;
       case "textTransform":
       case "theme":
    // case "title":
-        return 0;
-      case "data-testid":
-        return a?.["data-testid"] == "tracklist-row"
       case "isDesktop":
       case "isWebPSupported":
         return 1;
+      case "data-testid":
+        return a?.["data-testid"] == "tracklist-row"
       default:
         // typeof b == "string" && b.length > 2 && (kkk[b] ? ++kkk[b] : kkk[b] = 1);
         return b in a;
