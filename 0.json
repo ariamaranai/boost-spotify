@@ -25,5 +25,23 @@
       "domainType": "thirdParty",
       "urlFilter": "|https://open.spotifycdn.com/cdn/js"
     }
+  },
+  {
+    "id": 3,
+    "priority": 2129999997,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "query": ""
+        }
+      }
+    },
+    "condition": {
+      "resourceTypes": ["main_frame"],
+      "requestMethods": ["get"],
+      "domainType": "thirdParty",
+      "urlFilter": "|https://open.spotify."
+    }
   }
 ]
