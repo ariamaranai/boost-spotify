@@ -6,6 +6,9 @@
   "icons": {
     "128": "128.png"
   },
+  "omnibox": {
+    "keyword": "sp"
+  },
   "permissions": [
     "declarativeNetRequest"
   ],
@@ -18,6 +21,9 @@
       "path": "0.json",
       "enabled": true
     }]
+  },
+  "background": {
+    "service_worker": "bg.js"
   },
   "content_scripts": [{
     "js": ["main.js"],
