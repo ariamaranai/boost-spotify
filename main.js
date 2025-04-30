@@ -15,7 +15,7 @@ XMLHttpRequest = 0;
   o.defineProperty(navigator, "userAgent", {
     value: " "
   });
-  
+
   let dt = document.createElement("dt");
   dt.setAttribute("style", "font-size:14px");
 
@@ -76,9 +76,10 @@ XMLHttpRequest = 0;
       case "webkitfullscreenchange":
         return 0;
       default:
-        EventTarget.prototype.addEventListener.call(this, a, b, c);
+        return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
+
   let buf = {};
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     if (b == "tracklist-row") {
