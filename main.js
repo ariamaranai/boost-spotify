@@ -223,7 +223,7 @@ XMLHttpRequest = 0;
     }
   }
   o.prototype.hasOwnProperty = function (a) { return has(this, a) }
-  o.prototype.hasOwnProperty.call = (a, b) => has(a, b);
+  o.prototype.hasOwnProperty.call = has;
 
   let toLocale = v => {
     let n = v.playcount || "", l = n.length;
@@ -234,9 +234,9 @@ XMLHttpRequest = 0;
     : (+n).toLocaleString();
     return v;
   }
-  let toJson = (p = Response.prototype).json;
+  let { json } = (p = Response.prototype);
   p.json = async function (a, b) {
-    let result = await toJson.call(this, a, b);
+    let result = await json.call(this, a, b);
     let data = result.data;
     let items =
       data?.albumUnion?.tracksV2?.items?.map(v => toLocale(v?.track))
@@ -248,7 +248,7 @@ XMLHttpRequest = 0;
     }
     return result;
   }
-  let test = (p = RegExp.prototype).test;
+  let { test } = (p = RegExp.prototype);
   p.test = function (a) {
     return typeof a == "function" || a != " " && // ua
       a == "@webgate/gabo-receiver-service/public/v3/events" ||
