@@ -32,6 +32,9 @@ XMLHttpRequest = 0;
 
   p.addEventListener = function (a, b, c) {
     switch (a) {
+      case "animationend":
+      case "animationiteration":
+      case "animationstart":
       case "auxclick":
       case "compositionend":
       case "compositionstart":
@@ -91,8 +94,9 @@ XMLHttpRequest = 0;
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
-  //var kkk = {};
-  o.prototype.hasOwnProperty.call = (a, b) => {
+
+  // var z = {}
+  let has = (a, b) => {
     switch (b) {
       case "$active":
       case "$activeBackgroundColor":
@@ -214,10 +218,13 @@ XMLHttpRequest = 0;
       case "data-testid":
         return a?.["data-testid"] == "tracklist-row"
       default:
-        // typeof b == "string" && b.length > 2 && (kkk[b] ? ++kkk[b] : kkk[b] = 1);
+        // b.length > 2 && (z[b] ? ++z[b] : z[b] = 1);
         return b in a;
     }
   }
+  o.prototype.hasOwnProperty = function (a) { return has(this, a) }
+  o.prototype.hasOwnProperty.call = (a, b) => has(a, b);
+
   let toLocale = v => {
     let n = v.playcount || "", l = n.length;
     v.playcount =
