@@ -9,7 +9,7 @@
       "resourceTypes": ["script"],
       "requestMethods": ["get"],
       "domainType": "thirdParty",
-      "regexFilter": "^https://(w|open\\.spotifycdn\\.com/cdn/j)",
+      "regexFilter": "^https://(?:w|open\\.spotifycdn\\.com/cdn/j)",
       "initiatorDomains": ["open.spotify.com"]
     }
   },
