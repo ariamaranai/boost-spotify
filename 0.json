@@ -23,7 +23,8 @@
       "resourceTypes": ["script"],
       "requestMethods": ["get"],
       "domainType": "thirdParty",
-      "urlFilter": "|https://open.spotifycdn.com/cdn/j"
+      "urlFilter": "|https://open.spotifycdn.com/cdn/j",
+      "isUrlFilterCaseSensitive": true
     }
   },
   {
@@ -41,7 +42,8 @@
       "resourceTypes": ["main_frame"],
       "requestMethods": ["get"],
       "domainType": "thirdParty",
-      "urlFilter": "|https://open.spotify."
+      "urlFilter": "|https://open.spotify.",
+      "isUrlFilterCaseSensitive": true
     }
   }
 ]
