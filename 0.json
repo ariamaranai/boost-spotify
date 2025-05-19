@@ -10,7 +10,8 @@
       "requestMethods": ["get"],
       "domainType": "thirdParty",
       "urlFilter": "|https://w",
-      "initiatorDomains": ["open.spotify.com"]
+      "initiatorDomains": ["open.spotify.com"],
+      "isUrlFilterCaseSensitive": true
     }
   },
   {
