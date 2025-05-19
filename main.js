@@ -90,12 +90,12 @@ XMLHttpRequest = 0;
       if (items) {
         let u = this.querySelector("a").href.slice(-22);
         let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
-        n && ((u = this.lastChild).insertBefore(dt.cloneNode(), u.firstChild).textContent = n)
+        n && ((u = this.lastChild).insertBefore(dt.cloneNode(), u.firstChild).textContent = n);
       }
     } else Element.prototype.setAttribute.call(this, a, b);
   }
 
-  // var z = {}
+  // var z = {};
   let has = (a, b) => {
     switch (b) {
       case "$active":
@@ -105,10 +105,10 @@ XMLHttpRequest = 0;
       case "$hoverAnimationDuration":
       case "$hoverBackgroundColor":
       case "$titleGap":
-      // case "App-Platform":
+   // case "App-Platform":
       case "Accept":
       case "Accept-Language":
-      case "Content-Type":
+   // case "Content-Type":
       case "adsCoreConnector":
       case "adsEnabled":
       case "alt":
@@ -152,7 +152,7 @@ XMLHttpRequest = 0;
       case "backgroundSize":
       case "borderRadius":
       case "color":
-      // case "dangerouslySetInnerHTML":
+      case "dangerouslySetInnerHTML":
       case "data-is-icon-only":
       case "data-right-sidebar-hidden":
       case "data-test-uri":
@@ -211,6 +211,7 @@ XMLHttpRequest = 0;
       case "testid":
       case "textTransform":
       case "theme":
+        return 0;
    // case "title":
       case "isDesktop":
       case "isWebPSupported":
@@ -218,7 +219,7 @@ XMLHttpRequest = 0;
       case "data-testid":
         return a?.["data-testid"] == "tracklist-row"
       default:
-        // b.length > 2 && (z[b] ? ++z[b] : z[b] = 1);
+        // b && typeof b == "string" && b.length > 2 && (z[b] ??= 0, ++z[b]);
         return b in a;
     }
   }
