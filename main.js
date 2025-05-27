@@ -79,6 +79,7 @@ XMLHttpRequest = 0;
       case "webkitfullscreenchange":
         return 0;
       default:
+        console.log(a);
         return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
@@ -92,7 +93,8 @@ XMLHttpRequest = 0;
         let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
         n && ((u = this.lastChild).insertBefore(dt.cloneNode(), u.firstChild).textContent = n);
       }
-    } else Element.prototype.setAttribute.call(this, a, b);
+    } else
+      Element.prototype.setAttribute.call(this, a, b);
   }
 
   // var z = {};
@@ -152,7 +154,7 @@ XMLHttpRequest = 0;
       case "backgroundSize":
       case "borderRadius":
       case "color":
-      case "dangerouslySetInnerHTML":
+      // case "dangerouslySetInnerHTML":
       case "data-is-icon-only":
       case "data-right-sidebar-hidden":
       case "data-test-uri":
@@ -203,6 +205,7 @@ XMLHttpRequest = 0;
       case "shape":
       case "sharingInfo":
       case "shiftKey":
+      case "shouldPlayAnimation":
       case "showDelay":
       case "spellCheck":
       case "tabIndex":
@@ -241,7 +244,7 @@ XMLHttpRequest = 0;
     let data = result.data;
     let items =
       data?.albumUnion?.tracksV2?.items?.map(v => toLocale(v?.track))
-        ?? data?.playlistV2?.content?.items?.map(v => toLocale(v?.itemV2?.data));
+      ?? data?.playlistV2?.content?.items?.map(v => toLocale(v?.itemV2?.data));
     if (items) {
       let uri = location.pathname.slice(-22);
       let itemBuf = buf[uri];
