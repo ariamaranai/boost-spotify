@@ -79,11 +79,9 @@ XMLHttpRequest = 0;
       case "webkitfullscreenchange":
         return 0;
       default:
-        console.log(a);
         return EventTarget.prototype.addEventListener.call(this, a, b, c);
     }
   }
-
   let buf = {};
   HTMLDivElement.prototype.setAttribute = function (a, b) {
     if (b == "tracklist-row") {
@@ -96,7 +94,6 @@ XMLHttpRequest = 0;
     } else
       Element.prototype.setAttribute.call(this, a, b);
   }
-
   // var z = {};
   let has = (a, b) => {
     switch (b) {
@@ -192,6 +189,8 @@ XMLHttpRequest = 0;
       case "onMouseLeave":
       case "onMouseOut":
       case "onMouseOver":
+      case "onPointerEnter":
+      case "onPointerLeave":
       case "onTouchEnd":
       case "onTouchStart":
       case "placeholder":
