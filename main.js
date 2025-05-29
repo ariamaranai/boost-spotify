@@ -29,7 +29,6 @@ XMLHttpRequest = 0;
     a != "https://gae2-spclient.spotify.com/melody/v1/msg/batch" &&
     a != "https://spclient.wg.spotify.com/ads-identity-web-enricher/v1/gpcSignals"
     /* a.slice(40, 48) != "masthead" */ ? fet(a, b) : dummyThen;
-
   p.addEventListener = function (a, b, c) {
     switch (a) {
       case "animationend":
@@ -108,6 +107,7 @@ XMLHttpRequest = 0;
       case "Accept":
       case "Accept-Language":
    // case "Content-Type":
+      case "WebkitAnimation":
       case "adsCoreConnector":
       case "adsEnabled":
       case "alt":
@@ -142,6 +142,7 @@ XMLHttpRequest = 0;
       case "ariaPauseLabel":
       case "ariaPlayLabel":
       case "autoFocus":
+      case "autoplay":
       case "backgroundColor":
       case "backgroundImage":
       case "backgroundImageUrl":
@@ -162,6 +163,8 @@ XMLHttpRequest = 0;
       case "dir":
       case "direction":
       case "disabled":
+      case "easterEggConfig":
+      case "enableAnimation":
       case "error":
       case "errorMessage":
       case "errorName":
