@@ -116,6 +116,7 @@ XMLHttpRequest = 0;
       case "animateState":
       case "animated":
       case "animation":
+      case "animationData":
       case "aria-activedescendant":
       case "aria-checked":
       case "aria-controls":
@@ -134,7 +135,7 @@ XMLHttpRequest = 0;
       case "aria-pressed":
       case "aria-selected":
       case "aria-valuetext":
-      case "ariaDescribedBy":
+      case "ariaDescribedby":
       case "ariaHidden":
       case "ariaHideApp":
       case "ariaLabel":
