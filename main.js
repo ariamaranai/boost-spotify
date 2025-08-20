@@ -88,7 +88,7 @@ XMLHttpRequest = 0;
       if (items) {
         let u = this.querySelector("a").href.slice(-22);
         let n = items.find(v => v?.uri?.slice(-22) == u)?.playcount;
-        n && ((u = this.lastChild).insertBefore(dt.cloneNode(), u.firstChild).textContent = n);
+        n && (this.lastChild.insertAdjacentElement("afterbegin", dt.cloneNode()).textContent = n);
       }
     } else
       Element.prototype.setAttribute.call(this, a, b);
