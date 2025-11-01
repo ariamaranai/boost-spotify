@@ -1,7 +1,7 @@
 XMLHttpRequest = 0;
 {
-  let o = Object;
   let p = Element.prototype;
+  let o = Object;
   o.freeze =
   o.seal = a => a;
   o.isFrozen =
