@@ -13,7 +13,6 @@
     } else
       Element.prototype.setAttribute.call(this, a, b);
   }
-
   let toLocale = v => {
     let n = v.playcount || "", l = n.length;
     return [
