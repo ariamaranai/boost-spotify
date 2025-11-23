@@ -1,27 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Spoticount",
+  "name": "spoticount",
   "version": "0",
-  "description": "Boost and show playcount spotify.com",
+  "description": "Show playcount spotify.com",
   "icons": {
     "128": "128.png"
   },
   "omnibox": {
     "keyword": "sp"
   },
-  "permissions": [
-    "declarativeNetRequest"
-  ],
   "host_permissions": [
     "<all_urls>"
   ],
-  "declarative_net_request": {
-    "rule_resources": [{
-      "id": "0",
-      "path": "0.json",
-      "enabled": true
-    }]
-  },
   "background": {
     "service_worker": "bg.js"
   },
