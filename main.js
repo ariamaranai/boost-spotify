@@ -7,8 +7,8 @@
       let items = buf[location.pathname.slice(-22)];
       if (items) {
         let u = this.querySelector("a").href.slice(-22);
-        let n = items.find(v => v[1].slice(-22) == u)[0];
-        n && (this.lastChild.insertAdjacentElement("afterbegin", dt.cloneNode()).textContent = n);
+        (u = items.find(v => v[1].endsWith(u))[0]) &&
+        (this.lastChild.insertAdjacentElement("afterbegin", dt.cloneNode()).textContent = u);
       }
     } else
       Element.prototype.setAttribute.call(this, a, b);
